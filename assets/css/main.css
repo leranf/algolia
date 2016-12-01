@@ -1,2 +1,18 @@
+/* line 1, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJtYWluLnNjc3MiXSwic291cmNlc0NvbnRlbnQiOlsiIl0sImZpbGUiOiJtYWluLmNzcyIsInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */
+/* line 7, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+header .row {
+  background-color: blue;
+  height: 50px; }
+  /* line 11, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+  header .row .text-search {
+    padding-top: 10px; }
+    /* line 14, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    header .row .text-search input {
+      width: 100%;
+      height: 30px; }
+
+/*# sourceMappingURL=../../scss */
