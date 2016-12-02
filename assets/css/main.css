@@ -15,4 +15,41 @@ header .row {
       width: 100%;
       height: 30px; }
 
+/* line 23, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+#main .filters {
+  border-right: 1px solid grey; }
+  /* line 26, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+  #main .filters h1 {
+    font-size: 16px; }
+  /* line 30, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+  #main .filters ul {
+    list-style-type: none;
+    padding-left: 15px; }
+  /* line 42, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+  #main .filters .rating .rating-options {
+    padding-left: 0; }
+    /* line 45, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    #main .filters .rating .rating-options .star {
+      display: inline; }
+      /* line 48, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+      #main .filters .rating .rating-options .star img {
+        height: 20px; }
+
+/* line 61, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+#main .results .row {
+  padding: 20px 15px 0 15px; }
+  /* line 64, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+  #main .results .row .info {
+    display: inline; }
+    /* line 67, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    #main .results .row .info.found {
+      font-size: 15px; }
+    /* line 71, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    #main .results .row .info.speed {
+      font-size: 12px; }
+  /* line 76, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+  #main .results .row .line-break {
+    height: 21px;
+    border-bottom: 1px solid grey; }
+
 /*# sourceMappingURL=../../scss */
