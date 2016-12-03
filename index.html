@@ -9,13 +9,15 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
-  <body>
+  <body ng-app="algoliaRestaurantSearch" ng-controller="SearchController">
 
     <header>
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12 text-search">
-            <input type="text" placeholder="Search for Restaurants by Name, Cuisine, Location">
+            <form>
+              <input ng-model="search.query" type="text" placeholder="Search for Restaurants by Name, Cuisine, Location">
+            </form>
           </div>
         </div>
       </div>
@@ -23,58 +25,18 @@
 
     <div id="main" class="container-fluid">
       <div class="row">
-        <div class="col-xs-3 filters">
+        <div id="filters" class="col-xs-3">
           <div class="row food-type">
             <div class="col-xs-12">
               <h1>Cuisine/Food Type</h1>
               <ul class="row">
-                <li class="col-xs-12">
+                <li class="col-xs-12" ng-repeat="type in foodTypes">
                   <div class="row">
                     <div class="col-xs-9 type">
-                      Italian
+                      {{type.name}}
                     </div>
                     <div class="col-xs-3 count">
-                      70
-                    </div>
-                  </div>
-                </li>
-                <li class="col-xs-12">
-                  <div class="row">
-                    <div class="col-xs-9 type">
-                      American
-                    </div>
-                    <div class="col-xs-3 count">
-                      47
-                    </div>
-                  </div>
-                </li>
-                <li class="col-xs-12">
-                  <div class="row">
-                    <div class="col-xs-9 type">
-                      Californian
-                    </div>
-                    <div class="col-xs-3 count">
-                      42
-                    </div>
-                  </div>
-                </li>
-                <li class="col-xs-12">
-                  <div class="row">
-                    <div class="col-xs-9 type">
-                      French
-                    </div>
-                    <div class="col-xs-3 count">
-                      31
-                    </div>
-                  </div>
-                </li>
-                <li class="col-xs-12">
-                  <div class="row">
-                    <div class="col-xs-9 type">
-                      Seafood
-                    </div>
-                    <div class="col-xs-3 count">
-                      29
+                      {{type.results}}
                     </div>
                   </div>
                 </li>
@@ -85,107 +47,10 @@
             <div class="col-xs-12">
               <h1>Rating</h1>
               <ul class="row">
-                <li class="col-xs-12">
+                <li class="col-xs-12" ng-repeat="rating in ratings">
                   <ul class="rating-options">
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                  </ul>
-                  <ul class="rating-options">
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                  </ul>
-                  <ul class="rating-options">
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                  </ul>
-                  <ul class="rating-options">
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                  </ul>
-                  <ul class="rating-options">
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                  </ul>
-                  <ul class="rating-options">
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
-                    </li>
-                    <li class="star">
-                      <img src="resources/graphics/star-empty.png">
+                    <li class="star" ng-repeat="star in rating.stars track by $index">
+                      <img src="resources/graphics/star-{{star}}.png">
                     </li>
                   </ul>
                 </li>
@@ -196,55 +61,46 @@
             <div class="col-xs-12">
               <h1>Payment Options</h1>
               <ul class="row">
-                <li class="col-xs-12">
-                  American Express
-                </li>
-                <li class="col-xs-12">
-                  Visa
-                </li>
-                <li class="col-xs-12">
-                  MasterCard
-                </li>
-                <li class="col-xs-12">
-                  Discover
+                <li class="col-xs-12" ng-repeat="option in paymentOptions">
+                  {{option}}
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="col-xs-9 results">
-          <div class="row">
+        <div id="results" class="col-xs-9">
+          <div class="row queryInfo">
             <div class="col-xs-3">
               <div class="info found">
-                34 results found
+                {{search.numberOfHits}} results found
               </div>
               <div class="info speed">
-                in 0.002 seconds
+                in {{search.speed}} seconds
               </div>
             </div>
             <div class="col-xs-9 line-break"></div>
           </div>
           <div class="row">
-            <ul class="col-xs-12">
-              <li class="row">
-                <div class="col-xs-2">
-                  <img src="">
+            <ul class="col-xs-12 hits">
+              <li class="row hit" ng-repeat="hit in search.hits">
+                <div class="col-xs-3 rest-thumbnail">
+                  <img src="{{hit.image_url}}">
                 </div>
-                <div class="col-xs-10">
-                  <div class="row title">Anchor and Hope</div>
+                <div class="col-xs-7 rest-info">
+                  <div class="row title">{{hit.name}}</div>
                   <div class="row rating">
                     <div class="col-xs-1 score">
-                      4.2
+                      {{hit.stars_count}}
                     </div>
                     <div class="col-xs-2 stars">
                       <img src="resources/graphics/stars-icons.png">
                     </div>
                     <div class="col-xs-9 reviews">
-                      (1897 reviews)
+                      ({{hit.reviews_count}} reviews)
                     </div>
                   </div>
                   <div class="row description">
-                    American & Seafood | SOMA | $31 to $50
+                    {{hit.food_type}} | {{hit.neighborhood}} | {{hit.price_range}}
                   </div>
                 </div>
               </li>
@@ -257,6 +113,8 @@
 
     <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/angularjs/1/angular.min.js"></script>
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
