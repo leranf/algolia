@@ -23,8 +23,6 @@ header {
 }
 
 #filters {
-  border-right: 1px solid grey;
-
   h1 {
     font-size: 16px;
   }
@@ -60,6 +58,8 @@ header {
 }
 
 #results {
+  border-left: 1px solid grey;
+
   .row {
     padding: 20px 15px 0 15px;
     
@@ -77,9 +77,37 @@ header {
         }
 
         .rest-info {
-          .row {
-            padding-top: 0;
-            padding-bottom: 5px;
+          .info-container {
+            width: 350px;
+
+            .row {
+              padding-top: 0;
+              padding-bottom: 5px;
+
+              .score, .stars, .reviews {
+                padding-left: 0;
+                padding-right: 0;
+              }
+
+              .reviews {
+                margin-left: -12px;
+              }
+
+              .stars {
+                ul {
+                  padding-left: 0;
+                  
+                  .star {
+                    display: inline;
+                    
+                    img {
+                      margin-top: -5px;
+                      height: 16px;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

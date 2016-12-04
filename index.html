@@ -84,21 +84,27 @@
             <ul class="col-xs-12 hits">
               <li class="row hit" ng-repeat="hit in search.hits">
                 <div class="col-xs-3 rest-thumbnail" ng-style="{'background-image':'url({{hit.image_url}})'}"></div>
-                <div class="col-xs-7 rest-info">
-                  <div class="row title">{{hit.name}}</div>
-                  <div class="row rating">
-                    <div class="col-xs-1 score">
-                      {{hit.stars_count}}
+                <div class="col-xs-9 rest-info">
+                  <div class="info-container">
+                    <div class="row title">{{hit.name}}</div>
+                    <div class="row rating">
+                      <div class="col-xs-1 score">
+                        {{hit.stars_count}}
+                      </div>
+                      <div class="col-xs-4 stars">
+                        <ul>
+                          <li class="star" ng-repeat="star in [[],[],[],[],[]]">
+                            <img src="resources/graphics/star-empty.png">
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-xs-4 reviews">
+                        ({{hit.reviews_count}} reviews)
+                      </div>
                     </div>
-                    <div class="col-xs-2 stars">
-                      <img src="resources/graphics/stars-icons.png">
+                    <div class="row description">
+                      {{hit.food_type}} | {{hit.neighborhood}} | {{hit.price_range}}
                     </div>
-                    <div class="col-xs-9 reviews">
-                      ({{hit.reviews_count}} reviews)
-                    </div>
-                  </div>
-                  <div class="row description">
-                    {{hit.food_type}} | {{hit.neighborhood}} | {{hit.price_range}}
                   </div>
                 </div>
               </li>
