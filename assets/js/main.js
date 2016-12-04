@@ -61,6 +61,16 @@ angular.module('algoliaRestaurantSearch', ['algoliasearch'])
         facets: '*'
       }).then(function(results) {
         console.log(results);
+        results.hits.forEach(function(hit) {
+          hit.starsArr = [];
+          for (var i = 1; i <= 5; i++) {
+            if (i < hit.stars_count) {
+              hit.starsArr.push('plain');
+            } else {
+              hit.starsArr.push('empty');
+            }
+          }
+        })
         $scope.search.hits = results.hits;
         $scope.search.numberOfHits = results.nbHits;
         $scope.search.speed = results.processingTimeMS / 1000;

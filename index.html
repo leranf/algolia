@@ -93,8 +93,8 @@
                       </div>
                       <div class="col-xs-4 stars">
                         <ul>
-                          <li class="star" ng-repeat="star in [[],[],[],[],[]]">
-                            <img src="resources/graphics/star-empty.png">
+                          <li class="star" ng-repeat="star in hit.starsArr track by $index">
+                            <img src="resources/graphics/star-{{star}}.png">
                           </li>
                         </ul>
                       </div>

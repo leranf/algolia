@@ -23,6 +23,8 @@ header {
 }
 
 #filters {
+  max-width: 230px;
+
   h1 {
     font-size: 16px;
   }
@@ -30,12 +32,6 @@ header {
   ul {
     list-style-type: none;
     padding-left: 15px;
-  }
-
-  .food-type {
-    .type {
-
-    }
   }
 
   .rating { 
@@ -50,10 +46,6 @@ header {
         }
       }
     }
-  }
-
-  .payment-options {
-
   }
 }
 
