@@ -33,6 +33,10 @@ angular.module('algoliaRestaurantSearch', ['algoliasearch'])
       return { stars: stars };
     });
 
+    var filters = {
+      
+    }
+
     $scope.paymentOptions = [
       'American Express',
       'Visa',
@@ -46,6 +50,11 @@ angular.module('algoliaRestaurantSearch', ['algoliasearch'])
       numberOfHits: 0,
       speed: '0'
     };
+    
+    $scope.toggleFilter = function(filter) {
+
+    }
+
     var client = algolia.Client('R5FNFOXMUS', 'bb54ffbf3bb6805fc86ebed846cff7ca');
     var index = client.initIndex('restaurants');
 
@@ -57,7 +66,7 @@ angular.module('algoliaRestaurantSearch', ['algoliasearch'])
         results.hits.forEach(function(hit) {
           hit.starsArr = [];
           for (var i = 1; i <= 5; i++) {
-            if (i < hit.stars_count) {
+            if (i <= hit.stars_count) {
               hit.starsArr.push('plain');
             } else {
               hit.starsArr.push('empty');
