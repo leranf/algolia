@@ -48,13 +48,6 @@ angular.module('algoliaRestaurantSearch', ['algoliasearch'])
     };
     var client = algolia.Client('R5FNFOXMUS', 'bb54ffbf3bb6805fc86ebed846cff7ca');
     var index = client.initIndex('restaurants');
-    // index.setSettings({
-    //   attributesForFaceting: ['food_type'],
-    // }, function(err) {
-    //   if (err) {
-    //     console.log(err);
-    //   }
-    // });
 
     $scope.$watch('search.query', function() {
       index.search($scope.search.query, {
@@ -70,7 +63,10 @@ angular.module('algoliaRestaurantSearch', ['algoliasearch'])
               hit.starsArr.push('empty');
             }
           }
-        })
+        });
+        $scope.foodTypes.forEach(function(foodType) {
+          foodType.results = results.facets.food_type[foodType.name] || 0;
+        });
         $scope.search.hits = results.hits;
         $scope.search.numberOfHits = results.nbHits;
         $scope.search.speed = results.processingTimeMS / 1000;
