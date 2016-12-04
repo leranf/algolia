@@ -79,13 +79,13 @@ header {
               .score, .stars, .reviews {
                 padding-left: 0;
                 padding-right: 0;
-              }
-
-              .reviews {
-                margin-left: -12px;
+                display: inline-block;
               }
 
               .stars {
+                padding-left: 5px;
+                padding-right: 5px;
+
                 ul {
                   padding-left: 0;
                   
@@ -105,21 +105,23 @@ header {
       }
     }
 
-    .info {
-      display: inline;
+    &.queryInfo {
+      .info {
+        display: inline;
 
-      &.found {
-        font-size: 15px;
+        &.found {
+          font-size: 15px;
+        }
+
+        &.speed {
+          font-size: 12px;
+        }
       }
 
-      &.speed {
-        font-size: 12px;
+      .line-break {
+        height: 21px;
+        border-bottom: 1px solid grey;
       }
-    }
-
-    .line-break {
-      height: 21px;
-      border-bottom: 1px solid grey;
     }
   }
 }

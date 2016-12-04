@@ -60,31 +60,33 @@ header .row {
         /* line 79, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
         #results .row .hits .hit .rest-info .info-container .row .score, #results .row .hits .hit .rest-info .info-container .row .stars, #results .row .hits .hit .rest-info .info-container .row .reviews {
           padding-left: 0;
-          padding-right: 0; }
-        /* line 84, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-        #results .row .hits .hit .rest-info .info-container .row .reviews {
-          margin-left: -12px; }
-        /* line 89, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-        #results .row .hits .hit .rest-info .info-container .row .stars ul {
-          padding-left: 0; }
-          /* line 92, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-          #results .row .hits .hit .rest-info .info-container .row .stars ul .star {
-            display: inline; }
-            /* line 95, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-            #results .row .hits .hit .rest-info .info-container .row .stars ul .star img {
-              margin-top: -5px;
-              height: 16px; }
-    /* line 108, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-    #results .row .info {
+          padding-right: 0;
+          display: inline-block; }
+        /* line 85, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+        #results .row .hits .hit .rest-info .info-container .row .stars {
+          padding-left: 5px;
+          padding-right: 5px; }
+          /* line 89, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+          #results .row .hits .hit .rest-info .info-container .row .stars ul {
+            padding-left: 0; }
+            /* line 92, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+            #results .row .hits .hit .rest-info .info-container .row .stars ul .star {
+              display: inline; }
+              /* line 95, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+              #results .row .hits .hit .rest-info .info-container .row .stars ul .star img {
+                margin-top: -5px;
+                height: 16px; }
+    /* line 109, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    #results .row.queryInfo .info {
       display: inline; }
-      /* line 111, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-      #results .row .info.found {
+      /* line 112, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+      #results .row.queryInfo .info.found {
         font-size: 15px; }
-      /* line 115, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-      #results .row .info.speed {
+      /* line 116, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+      #results .row.queryInfo .info.speed {
         font-size: 12px; }
-    /* line 120, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-    #results .row .line-break {
+    /* line 121, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    #results .row.queryInfo .line-break {
       height: 21px;
       border-bottom: 1px solid grey; }
 
