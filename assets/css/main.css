@@ -43,25 +43,24 @@ header .row {
     list-style-type: none; }
   /* line 72, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
   #results .row .hits .hit .rest-thumbnail {
+    height: 120px;
     padding-left: 0;
-    padding-right: 0; }
-    /* line 76, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
-    #results .row .hits .hit .rest-thumbnail img {
-      height: 120px; }
-  /* line 82, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    padding-right: 0;
+    background-size: cover; }
+  /* line 80, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
   #results .row .hits .hit .rest-info .row {
     padding-top: 0;
     padding-bottom: 5px; }
-  /* line 90, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+  /* line 88, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
   #results .row .info {
     display: inline; }
-    /* line 93, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    /* line 91, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
     #results .row .info.found {
       font-size: 15px; }
-    /* line 97, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+    /* line 95, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
     #results .row .info.speed {
       font-size: 12px; }
-  /* line 102, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
+  /* line 100, /Users/leranfirer/Documents/algolia/assets/scss/main.scss */
   #results .row .line-break {
     height: 21px;
     border-bottom: 1px solid grey; }

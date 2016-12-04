@@ -70,12 +70,10 @@ header {
     .hits {
       .hit {
         .rest-thumbnail {
+          height: 120px;
           padding-left: 0;
           padding-right: 0;
-
-          img {
-            height: 120px;
-          }
+          background-size: cover;
         }
 
         .rest-info {

@@ -83,9 +83,7 @@
           <div class="row">
             <ul class="col-xs-12 hits">
               <li class="row hit" ng-repeat="hit in search.hits">
-                <div class="col-xs-3 rest-thumbnail">
-                  <img src="{{hit.image_url}}">
-                </div>
+                <div class="col-xs-3 rest-thumbnail" ng-style="{'background-image':'url({{hit.image_url}})'}"></div>
                 <div class="col-xs-7 rest-info">
                   <div class="row title">{{hit.name}}</div>
                   <div class="row rating">

@@ -12,23 +12,26 @@
 angular.module('algoliaRestaurantSearch', ['algoliasearch'])
   .controller('SearchController', ['$scope', 'algolia', function($scope, algolia) {
     $scope.foodTypes = [
-      { name: 'Italian',     results: 0 },
-      { name: 'American',    results: 0 },
-      { name: 'Californian', results: 0 },
-      { name: 'French',      results: 0 },
-      { name: 'Seafood',     results: 0 },
-      { name: 'Japanese',    results: 0 },
-      { name: 'Indian',      results: 0 },
+      { name: 'Italian' },
+      { name: 'American' },
+      { name: 'Californian' },
+      { name: 'French' },
+      { name: 'Seafood' },
+      { name: 'Japanese' },
+      { name: 'Indian' },
     ];
 
-    $scope.ratings = [
-      { stars: ['empty', 'empty', 'empty', 'empty', 'empty'] },
-      { stars: ['plain', 'empty', 'empty', 'empty', 'empty'] },
-      { stars: ['plain', 'plain', 'empty', 'empty', 'empty'] },
-      { stars: ['plain', 'plain', 'plain', 'empty', 'empty'] },
-      { stars: ['plain', 'plain', 'plain', 'plain', 'empty'] },
-      { stars: ['plain', 'plain', 'plain', 'plain', 'plain'] },
-    ];
+    $scope.ratings = [[], [], [], [], [], []].map(function(arr, idx) {
+      var stars = [];
+      for (var i = 0; i < 5; i++) {
+        if (i < idx) {
+          stars.push('plain');
+        } else {
+          stars.push('empty');
+        }
+      }
+      return { stars: stars };
+    });
 
     $scope.paymentOptions = [
       'American Express',
@@ -45,17 +48,25 @@ angular.module('algoliaRestaurantSearch', ['algoliasearch'])
     };
     var client = algolia.Client('R5FNFOXMUS', 'bb54ffbf3bb6805fc86ebed846cff7ca');
     var index = client.initIndex('restaurants');
+    // index.setSettings({
+    //   attributesForFaceting: ['food_type'],
+    // }, function(err) {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    // });
 
     $scope.$watch('search.query', function() {
-      index.search($scope.search.query)
-        .then(function searchSuccess(results) {
-          console.log(results);
-          $scope.search.hits = results.hits;
-          $scope.search.numberOfHits = results.nbHits;
-          $scope.search.speed = results.processingTimeMS / 1000;
-        })
-        .catch(function searchFailure(err) {
-          console.log('some error', err);
-        });
+      index.search($scope.search.query, {
+        facets: '*'
+      }).then(function(results) {
+        console.log(results);
+        $scope.search.hits = results.hits;
+        $scope.search.numberOfHits = results.nbHits;
+        $scope.search.speed = results.processingTimeMS / 1000;
+      })
+      .catch(function(err) {
+        console.log('some error', err);
+      });
     });
   }]);
