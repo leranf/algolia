@@ -9,7 +9,7 @@
 //     console.error(err);
 //   });
 
-angular.module('algoliaRestaurantSearch', ['algoliasearch'])
+angular.module('algoliaRestaurantSearch', ['instantsearch'])
   .controller('SearchController', ['$scope', 'algolia', function($scope, algolia) {
     $scope.foodTypes = [
       { name: 'Italian' },
