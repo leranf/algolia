@@ -1,15 +1,4 @@
-// var client = algoliasearch('R5FNFOXMUS', 'bb54ffbf3bb6805fc86ebed846cff7ca');
-// var index = client.initIndex('restaurants');
-
-// index.search('italian')
-//   .then(function searchSuccess(content) {
-//     console.log(content);
-//   })
-//   .catch(function searchFailure(err) {
-//     console.error(err);
-//   });
-
-angular.module('algoliaRestaurantSearch', ['instantsearch'])
+angular.module('algoliaRestaurantSearch', ['algoliasearch'])
   .controller('SearchController', ['$scope', 'algolia', function($scope, algolia) {
     $scope.foodTypes = [
       { name: 'Italian' },
