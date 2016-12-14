@@ -1,124 +1,100 @@
 <!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Restaurant Locator - by Algolia</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  </head>
-  <body ng-app="algoliaRestaurantSearch" ng-controller="SearchController">
-
-    <header>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12 text-search">
-            <form>
-              <input ng-model="search.query" type="text" placeholder="Search for Restaurants by Name, Cuisine, Location">
-            </form>
-          </div>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Restaurant Locator - by Algolia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/css/ion.rangeSlider.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/css/ion.rangeSlider.skinFlat.css">
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <div id="content-container">
+    <div id="search-container">
+      <header>
+        <div id="search-input">
+          <input type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Search by name, brand, description..."/>
         </div>
+      </header>
+
+      <main>
+        <div id="left-column">
+          <div id="facets"></div>
+        </div>
+
+        <div id="right-column">
+          <div id="stats"></div>
+          <div id="hits"></div>
+          <div id="pagination"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="text/template" id="hit-template">
+    {{#hits}}
+    <div class="hit">
+      <div class="hit-image">
+        <img src="{{image_url}}" alt="{{name}}">
       </div>
-    </header>
-
-    <div id="main" class="container-fluid">
-      <div class="row">
-        <div id="filters" class="col-xs-3">
-          <div class="row food-type">
-            <div class="col-xs-12">
-              <h1>Cuisine/Food Type</h1>
-              <ul class="row">
-                <li class="col-xs-12" ng-repeat="type in foodTypes" ng-click="toggleFilter(type.name)">
-                  <div class="row">
-                    <div class="col-xs-9 type">
-                      {{type.name}}
-                    </div>
-                    <div class="col-xs-3 count">
-                      {{type.results}}
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="row rating">
-            <div class="col-xs-12">
-              <h1>Rating</h1>
-              <ul class="row">
-                <li class="col-xs-12" ng-repeat="rating in ratings">
-                  <ul class="rating-options">
-                    <li class="star" ng-repeat="star in rating.stars track by $index">
-                      <img src="resources/graphics/star-{{star}}.png">
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="row payment-options">
-            <div class="col-xs-12">
-              <h1>Payment Options</h1>
-              <ul class="row">
-                <li class="col-xs-12" ng-repeat="option in paymentOptions">
-                  {{option}}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div id="results" class="col-xs-9">
-          <div class="row queryInfo">
-            <div class="col-md-4 col-sm-5 col-xs-6">
-              <div class="info found">
-                {{search.numberOfHits}} results found
-              </div>
-              <div class="info speed">
-                in {{search.speed}} seconds
-              </div>
-            </div>
-            <div class="col-md-8 col-sm-7 col-xs-6 line-break"></div>
-          </div>
-          <div class="row">
-            <ul class="col-xs-12 hits">
-              <li class="row hit" ng-repeat="hit in search.hits">
-                <div class="col-xs-3 rest-thumbnail" ng-style="{'background-image':'url({{hit.image_url}})'}"></div>
-                <div class="col-xs-9 rest-info">
-                  <div class="info-container">
-                    <div class="row title">{{hit.name}}</div>
-                    <div class="row rating">
-                      <div class="score">
-                        {{hit.stars_count}}
-                      </div>
-                      <div class="stars">
-                        <ul>
-                          <li class="star" ng-repeat="star in hit.starsArr track by $index">
-                            <img src="resources/graphics/star-{{star}}.png">
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="reviews">
-                        ({{hit.reviews_count}} reviews)
-                      </div>
-                    </div>
-                    <div class="row description">
-                      {{hit.food_type}} | {{hit.neighborhood}} | {{hit.price_range}}
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div class="hit-content">
+        <h2 class="hit-name">{{{name}}}</h2>
+        <p class="hit-rating">
+          <span class="hit-rating--count">{{{stars_count}}}</span>
+          {{#stars}}
+            <span class="ais-star-rating--star{{^.}}__empty{{/.}}"></span>
+          {{/stars}}
+          <span class="hit-rating--reviews">({{{reviews_count}}} reviews)</span>
+        </p>
+        <p class="hit-description">{{{food_type}}} | {{{neighborhood}}} | {{{price_range}}}</p>
       </div>
     </div>
+    {{/hits}}
+  </script>
 
+  <script type="text/template" id="stats-template">
+    {{ nbHits }} Result{{#nbHits_plural}}s{{/nbHits_plural}} <span class="found-in">Found in {{ processingTimeMS }}ms</span>
+  </script>
 
-    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/angularjs/1/angular.min.js"></script>
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+  <script type="text/template" id="facet-template">
+    <div class="facet">
+      <h5>{{ title }}</h5>
+      <ul>
+        {{#values}}
+        <li>
+          <a href="" class="facet-link toggle-refine {{#disjunctive}}facet-disjunctive{{/disjunctive}} {{#isRefined}}facet-refined{{/isRefined}}" data-facet="{{ facet }}" data-value="{{ name }}">
+            {{ name }}<span class="facet-count">{{ count }}</span>
+          </a>
+        </li>
+        {{/values}}
+      </ul>
+    </div>
+  </script>
+
+  <script type="text/template" id="no-results-template">
+    <div id="no-results-message">
+      <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
+      <ul>
+        {{#filters}}
+        <li class="{{class}}" data-facet="{{facet}}" data-value="{{facet_value}}">
+          {{label}}
+          <span class="value">{{label_value}}</span>
+        </li>
+        {{/filters}}
+        <br>
+        <a href="" class='clear-all'>Clear all</a>
+      </ul>
+    </div>
+  </script>
+
+  <script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+  <script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+  <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
+  <script src="//cdn.jsdelivr.net/jquery.ion.rangeslider/2.0.12/js/ion.rangeSlider.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
 </html>
